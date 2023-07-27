@@ -1,16 +1,23 @@
 fn main() {
     let mut list = vec![1, 2, 3, 4, 5, 6];
-    gettingfirstelement(list);
-    println!("{:?}", addelementpush(&mut list, 3));
-    println!("{:?}", addelementinsert(&mut list, 3, 0));
-    getelement(&mut list, 3);
+    let check = gettingfirstelement(list.clone());
 
+    if check == true {
+        println!("{:?}", addelementpush(&mut list, 3));
+        println!("{:?}", addelementinsert(&mut list, 3, 0));
+        getelement(&mut list, 3);
+    } else {
+        println!("If u're here it means something went wrong");
+    }
 }
 
-fn gettingfirstelement(list: Vec<i32>) {
+fn gettingfirstelement(list: Vec<i32>) -> bool {//can write better function with true false but i want it do latter
     match list.first() {
-        Some(el) => println!("First element is {}", el),
-        None =>println!("Vector is empty!"),
+        Some(el) => {
+            println!("First element is {}", el);
+            return true;
+        }
+        None => return false
     }
 }
 
